@@ -5,7 +5,7 @@ import React from "react";
 
 const Projects = () => {
   return (
-    <section id="projects" className="space-y-[70px]">
+    <section id="projects" className="space-y-[70px] pt-[125px]">
       <div className="">
         <div className="space-y-[100px]">
           <div className="grid grid-cols-2">

@@ -14,7 +14,7 @@ const Reachout = () => {
         </p>
       </div>
 
-      <div className="flex items-start justify-between gap-[50px]">
+      <div className="flex items-start justify-between gap-[40px]">
         <form action="" className="space-y-[24px] flex flex-col w-full">
           <input
             type="text"

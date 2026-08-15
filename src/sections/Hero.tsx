@@ -1,15 +1,30 @@
+"use client";
+
+import RevealMask from "@/components/motion/revealmask";
+import { useCursor } from "@/components/motion/cursorprovider";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const Hero = () => {
+  const { mode, setMode } = useCursor();
+
   return (
-    <div className="">
+    <section
+      id="hero"
+      className="relative hero-title overflow-visible"
+      onPointerEnter={() => setMode("reveal")}
+      onPointerLeave={() => setMode("default")}
+    >
       <div className="w-full flex items-start justify-between">
         <div className="pt-[123px]">
           <h2 className="text-[36px] leading-none">I&apos;m Praise</h2>
-          <h1 className="text-[140px] tracking-[-4%] leading-[117%]">Building viable solutions since 2024</h1>
+
+          <h1 className="text-[140px] tracking-[-4%] leading-[117%] hero-title-base">
+            Building viable solutions <br /> since 2024
+          </h1>
         </div>
+
+        {/* Social links */}
         <div className="flex flex-col items-center gap-[20px]">
           <Link href={"/"}>
             {" "}
@@ -49,25 +64,33 @@ const Hero = () => {
           </Link>
         </div>
       </div>
+      <RevealMask active={mode === "reveal"}>
+        <div className="hero-title-reveal">
+          Designing cool shi <br />
+          since 2025
+        </div>
+      </RevealMask>
+
+      {/* Stats row */}
       <div className="font-mono text-[18px] font-medium flex items-center justify-between pt-30">
         <div className="flex flex-col items-start gap-3 py-[20px] px-[28px]">
-            <p className="text-[40px]">2+</p>
-            <p className="">YEARS BUILDING</p>
+          <p className="text-[40px]">2+</p>
+          <p className="">YEARS BUILDING</p>
         </div>
         <div className="flex flex-col items-start gap-3 py-[20px] px-[28px]">
-            <p className="text-[40px]">5+</p>
-            <p className="">VIABLE PROJECTS</p>
+          <p className="text-[40px]">5+</p>
+          <p className="">VIABLE PROJECTS</p>
         </div>
         <div className="flex flex-col items-start gap-3 py-[20px] px-[28px]">
-            <p className="text-[40px]">2</p>
-            <p className="">NOTABLE MILESTONES</p>
+          <p className="text-[40px]">2</p>
+          <p className="">NOTABLE MILESTONES</p>
         </div>
         <div className="flex flex-col items-start gap-3 py-[20px] px-[28px]">
-            <p className="text-[40px]">0</p>
-            <p className="">IDEAS WORTH EXPLORING</p>
+          <p className="text-[40px]">0</p>
+          <p className="">IDEAS WORTH EXPLORING</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

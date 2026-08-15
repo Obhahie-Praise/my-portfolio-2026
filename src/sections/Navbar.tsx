@@ -4,7 +4,7 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <div className='flex items-center justify-between py-[50px] font-mono text-[20px] tracking-[4%]'>
+    <div className='flex items-center justify-between py-[50px] font-mono font-semibold text-[20px] tracking-[4%]'>
         <Image src={"/logo.svg"} alt='Portfolio logo' height={24.3} width={238} />
         <Link href={"/#"}>PROJECTS</Link>
         <Link href={"/#"}>FEATS</Link>

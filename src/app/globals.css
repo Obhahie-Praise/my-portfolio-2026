@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FFE2D1;
-  --foreground: #351E10;
+  --background: #ffe2d1;
+  --foreground: #351e10;
 }
 
 @theme inline {
@@ -14,8 +14,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #FFE2D1;
-    --foreground: #351E10;
+    --background: #ffe2d1;
+    --foreground: #351e10;
   }
 }
 
@@ -23,4 +23,77 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+}
+
+.custom-cursor {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 15px;
+  height: 15px;
+
+  border-radius: 999px;
+
+  background: var(--foreground);
+
+  pointer-events: none;
+
+  z-index: 99999;
+
+  transform: translate(-50%, -50%);
+
+  will-change: transform;
+}
+.hero-title {
+  position: relative;
+  overflow: visible;
+}
+
+.hero-title-base {
+  position: relative;
+  z-index: 1;
+  font-size: 140px;
+  letter-spacing: -4%;
+  line-height: 117%;
+}
+
+.hero-title-reveal {
+  /* Must overlay the base text exactly */
+  position: absolute;
+  width: 100%;
+  overflow: visible;
+
+  /* Offset matches the h2 height: 36px font-size × leading-none (1) = 36px */
+  top: 158px;
+
+  font-size: 140px;
+  letter-spacing: -4%;
+  line-height: 117%;
+
+  color: var(--background);
+
+  /* Allow pointer events so onPointerEnter/Leave fire */
+  pointer-events: none;
+
+  z-index: 20;
+}
+
+.reveal-mask {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 20;
+
+  background: var(--foreground);
+  color: var(--background);
+
+  overflow: visible;
+
+  box-shadow:
+    0 10px 30px rgba(33, 27, 23, 0.14),
+    0 3px 10px rgba(33, 27, 23, 0.08);
 }

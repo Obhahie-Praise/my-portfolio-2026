@@ -41,7 +41,7 @@ const Footer = () => {
           COPYRIGHTS 2026 <br /> Designed and built by Praise
         </p>
       </div>
-    <h3 className="text-center font-medium text-[235px] tracking-[-1%]">Obhahie Praise</h3>
+    <h3 className="text-center font-medium text-[235px] tracking-[-1%] leading-none">Obhahie Praise</h3>
     </section>
   );
 };
