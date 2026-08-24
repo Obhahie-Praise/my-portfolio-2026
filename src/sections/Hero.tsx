@@ -11,14 +11,17 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative hero-title overflow-visible px-[50px] "
+      className="relative hero-title overflow-visible px-[20px] md:px-[50px]"
     >
-      <div className="w-full flex items-start justify-between">
-        <div className="pt-[123px]">
-          <h2 className="text-[36px] leading-none">I&apos;m Praise</h2>
+      {/* ── Title + social links row ─────────────────────────────────────── */}
+      <div className="w-full flex items-start justify-between gap-[16px]">
+        <div className="pt-[60px] md:pt-[123px] min-w-0">
+          <h2 className="text-[clamp(18px,2.5vw,36px)] leading-none">
+            I&apos;m Praise
+          </h2>
 
           <h1
-            className="text-[140px] tracking-[-4%] leading-[117%] hero-title-base"
+            className="hero-title-base"
             onPointerEnter={() => setMode("reveal")}
             onPointerLeave={() => setMode("default")}
           >
@@ -26,66 +29,72 @@ const Hero = () => {
           </h1>
         </div>
 
-        {/* Social links */}
-        <div className="flex flex-col items-center gap-[20px]">
+        {/* Social links — vertical column on tablet+, row on mobile */}
+        <div className="flex md:flex-col items-center gap-[16px] md:gap-[20px] pt-[64px] md:pt-0 flex-shrink-0">
           <Link
-            href={"/"}
-            className="cursor-none hover:opacity-80 transition-all hover:scale-110"
+            href="/"
+            className="md:cursor-none hover:opacity-80 transition-all hover:scale-110"
             onPointerEnter={() => setMode("link")}
             onPointerLeave={() => setMode("default")}
+            aria-label="TikTok"
           >
-            {" "}
             <Image
-              src={"/icons/tiktok.svg"}
+              src="/icons/tiktok.svg"
               alt="tiktok link"
               height={24}
               width={24}
+              className="w-[20px] h-[20px] md:w-[24px] md:h-[24px]"
             />
           </Link>
           <Link
-            href={"/"}
-            className="cursor-none hover:opacity-80 transition-all hover:scale-110"
+            href="/"
+            className="md:cursor-none hover:opacity-80 transition-all hover:scale-110"
             onPointerEnter={() => setMode("link")}
             onPointerLeave={() => setMode("default")}
+            aria-label="LinkedIn"
           >
-            {" "}
             <Image
-              src={"/icons/linkedin.svg"}
+              src="/icons/linkedin.svg"
               alt="linkedin link"
               height={24}
               width={24}
+              className="w-[20px] h-[20px] md:w-[24px] md:h-[24px]"
             />
           </Link>
           <Link
-            href={"/"}
-            className="cursor-none hover:opacity-80 transition-all hover:scale-110"
+            href="/"
+            className="md:cursor-none hover:opacity-80 transition-all hover:scale-110"
             onPointerEnter={() => setMode("link")}
             onPointerLeave={() => setMode("default")}
+            aria-label="Twitter / X"
           >
-            {" "}
             <Image
-              src={"/icons/twitter.svg"}
+              src="/icons/twitter.svg"
               alt="twitter link"
               height={24}
               width={24}
+              className="w-[20px] h-[20px] md:w-[24px] md:h-[24px]"
             />
           </Link>
           <Link
-            href={"/"}
-            className="cursor-none hover:opacity-80 transition-all hover:scale-110"
+            href="/"
+            className="md:cursor-none hover:opacity-80 transition-all hover:scale-110"
             onPointerEnter={() => setMode("link")}
             onPointerLeave={() => setMode("default")}
+            aria-label="GitHub"
           >
-            {" "}
             <Image
-              src={"/icons/github.svg"}
+              src="/icons/github.svg"
               alt="github link"
               height={24}
               width={24}
+              className="w-[20px] h-[20px] md:w-[24px] md:h-[24px]"
             />
           </Link>
         </div>
       </div>
+
+      {/* Reveal mask overlay — desktop cursor interaction */}
       <RevealMask>
         <div className="hero-title-reveal">
           Designing cool shiii <br />
@@ -93,23 +102,23 @@ const Hero = () => {
         </div>
       </RevealMask>
 
-      {/* Stats row */}
-      <div className="font-mono text-[18px] font-medium flex items-center justify-between pt-30">
-        <div className="flex flex-col items-start gap-3 py-[20px] px-[28px]">
-          <p className="text-[40px]">2+</p>
-          <p className="">YEARS BUILDING</p>
+      {/* ── Stats row ────────────────────────────────────────────────────── */}
+      <div className="font-mono font-medium flex flex-wrap items-start justify-start md:justify-between pt-[40px] md:pt-30 gap-y-[8px]">
+        <div className="flex flex-col items-start gap-2 py-[16px] px-[16px] md:py-[20px] md:px-[28px] min-w-[140px] md:min-w-0">
+          <p className="text-[clamp(28px,4vw,40px)]">2+</p>
+          <p className="text-[clamp(11px,1.2vw,18px)]">YEARS BUILDING</p>
         </div>
-        <div className="flex flex-col items-start gap-3 py-[20px] px-[28px]">
-          <p className="text-[40px]">5+</p>
-          <p className="">VIABLE PROJECTS</p>
+        <div className="flex flex-col items-start gap-2 py-[16px] px-[16px] md:py-[20px] md:px-[28px] min-w-[140px] md:min-w-0">
+          <p className="text-[clamp(28px,4vw,40px)]">5+</p>
+          <p className="text-[clamp(11px,1.2vw,18px)]">VIABLE PROJECTS</p>
         </div>
-        <div className="flex flex-col items-start gap-3 py-[20px] px-[28px]">
-          <p className="text-[40px]">2</p>
-          <p className="">NOTABLE MILESTONES</p>
+        <div className="flex flex-col items-start gap-2 py-[16px] px-[16px] md:py-[20px] md:px-[28px] min-w-[140px] md:min-w-0">
+          <p className="text-[clamp(28px,4vw,40px)]">2</p>
+          <p className="text-[clamp(11px,1.2vw,18px)]">NOTABLE MILESTONES</p>
         </div>
-        <div className="flex flex-col items-start gap-3 py-[20px] px-[28px]">
-          <p className="text-[40px]">0</p>
-          <p className="">IDEAS WORTH EXPLORING</p>
+        <div className="flex flex-col items-start gap-2 py-[16px] px-[16px] md:py-[20px] md:px-[28px] min-w-[140px] md:min-w-0">
+          <p className="text-[clamp(28px,4vw,40px)]">0</p>
+          <p className="text-[clamp(11px,1.2vw,18px)]">IDEAS WORTH EXPLORING</p>
         </div>
       </div>
     </section>

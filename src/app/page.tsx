@@ -9,9 +9,9 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="cursor-none">
+    <div className="md:cursor-none">
       <Navbar />
-      <div className="space-y-[300px] pb-[300px] overflow-x-hidden">
+      <div className="space-y-[100px] pb-[100px] md:space-y-[200px] md:pb-[200px] lg:space-y-[300px] lg:pb-[300px] overflow-x-hidden">
         <Hero />
         <Projects />
         <Feats />

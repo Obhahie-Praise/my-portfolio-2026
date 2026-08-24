@@ -56,7 +56,7 @@ export default function ThoughtModal({ thought, onClose }: ThoughtModalProps) {
       {thought && (
         // Full-viewport wrapper — clicking it closes the modal
         <motion.div
-          className="fixed inset-0 z-[1000] flex items-center justify-center p-6"
+          className="fixed inset-0 z-[1000] flex items-center justify-center p-[12px] md:p-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -79,7 +79,7 @@ export default function ThoughtModal({ thought, onClose }: ThoughtModalProps) {
           {/* Modal panel — clicks inside do NOT propagate to backdrop */}
           <motion.div
             ref={modalRef}
-            className="relative z-10 w-full max-w-[1080px] max-h-[90vh] overflow-y-auto bg-background"
+            className="relative z-10 w-full max-w-[1080px] max-h-[92vh] overflow-y-auto bg-background rounded-[8px]"
             initial={{ opacity: 0, scale: 0.97, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.97, y: 16 }}
@@ -88,40 +88,40 @@ export default function ThoughtModal({ thought, onClose }: ThoughtModalProps) {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-start justify-between border-b border-[var(--foreground)]/10 px-[40px] py-[32px]">
-              <div className="space-y-[10px] pr-10">
+            <div className="flex items-start justify-between border-b border-[var(--foreground)]/10 px-[20px] py-[24px] md:px-[40px] md:py-[32px]">
+              <div className="space-y-[10px] pr-[16px] md:pr-10 min-w-0">
                 {/* Meta row */}
-                <p className="text-[13px] font-medium tracking-[0.06em] uppercase opacity-50">
+                <p className="text-[11px] md:text-[13px] font-medium tracking-[0.06em] uppercase opacity-50">
                   {thought.date}&nbsp;&nbsp;·&nbsp;&nbsp;{thought.tags}&nbsp;&nbsp;·&nbsp;&nbsp;{thought.readTime} min read
                 </p>
 
                 {/* Title */}
                 <h2
                   id="thought-modal-title"
-                  className="font-mono font-medium text-[40px] leading-[118%] tracking-[-0.5px]"
+                  className="font-mono font-medium text-[clamp(22px,3vw,40px)] leading-[118%] tracking-[-0.5px]"
                 >
                   {thought.title}
                 </h2>
               </div>
 
-              {/* Close button */}
+              {/* Close button — min 44px tap target */}
               <button
                 type="button"
                 onClick={handleClose}
                 aria-label="Close thought"
-                className="flex-shrink-0 mt-1 w-[36px] h-[36px] flex items-center justify-center border border-[var(--foreground)]/15 rounded-full text-[18px] leading-none opacity-60 hover:opacity-100 transition-opacity duration-200 cursor-none"
+                className="flex-shrink-0 mt-1 w-[44px] h-[44px] flex items-center justify-center border border-[var(--foreground)]/15 rounded-full text-[18px] leading-none opacity-60 hover:opacity-100 transition-opacity duration-200"
               >
                 ×
               </button>
             </div>
 
             {/* Body */}
-            <div className="px-[40px] py-[36px]">
+            <div className="px-[20px] py-[28px] md:px-[40px] md:py-[36px]">
               <div className="space-y-[20px]">
                 {thought.content.split("\n\n").map((paragraph, i) => (
                   <p
                     key={i}
-                    className="text-[24px] leading-[168%] tracking-[-0.1px]"
+                    className="text-[clamp(15px,1.8vw,24px)] leading-[168%] tracking-[-0.1px]"
                   >
                     {paragraph}
                   </p>

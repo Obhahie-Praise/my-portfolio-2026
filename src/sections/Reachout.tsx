@@ -75,18 +75,20 @@ const Reachout = () => {
   const showFeedback = feedbackMessage !== null;
 
   return (
-    <section id="reachout" className="space-y-[70px] px-[50px] ">
-      <div className="grid grid-cols-2">
-        <h3 className="text-[150px] tracking-[1%] leading-none font-mono flex items-center">
+    <section id="reachout" className="space-y-[48px] md:space-y-[70px] px-[20px] md:px-[50px]">
+      {/* Section header */}
+      <div className="grid grid-cols-1 gap-[12px] md:grid-cols-2">
+        <h3 className="text-[clamp(52px,10vw,150px)] tracking-[1%] leading-none font-mono flex items-center">
           Reach out
         </h3>
-        <p className="text-[28px] tracking-[1%] leading-[122%] flex items-center">
+        <p className="text-[clamp(16px,2vw,28px)] tracking-[1%] leading-[122%] flex items-center">
           Have an idea worth building, a problem worth solving, or just want to
           talk? I&apos;d love to hear from you.
         </p>
       </div>
 
-      <div className="flex items-start justify-between gap-[40px]">
+      {/* Form + contact info — stacks on mobile */}
+      <div className="flex flex-col gap-[48px] md:flex-row md:items-start md:justify-between md:gap-[40px]">
         <form
           onSubmit={handleSubmit}
           noValidate
@@ -101,7 +103,7 @@ const Reachout = () => {
               clearFeedback();
             }}
             disabled={isSending}
-            className="cursor-none text-[32px] leading-none tracking-[1%] border-b border-foreground outline-none py-[18px] bg-transparent disabled:opacity-50 transition-opacity duration-200"
+            className="md:cursor-none text-[clamp(20px,2.5vw,32px)] leading-none tracking-[1%] border-b border-foreground outline-none py-[18px] bg-transparent disabled:opacity-50 transition-opacity duration-200"
           />
           <input
             type="email"
@@ -112,7 +114,7 @@ const Reachout = () => {
               clearFeedback();
             }}
             disabled={isSending}
-            className="cursor-none text-[32px] leading-none tracking-[1%] border-b border-foreground outline-none py-[18px] bg-transparent disabled:opacity-50 transition-opacity duration-200"
+            className="md:cursor-none text-[clamp(20px,2.5vw,32px)] leading-none tracking-[1%] border-b border-foreground outline-none py-[18px] bg-transparent disabled:opacity-50 transition-opacity duration-200"
           />
           <textarea
             placeholder="Message"
@@ -122,7 +124,7 @@ const Reachout = () => {
               clearFeedback();
             }}
             disabled={isSending}
-            className="cursor-none text-[32px] leading-none tracking-[1%] resize-none border-b border-foreground outline-none py-[18px] bg-transparent disabled:opacity-50 transition-opacity duration-200"
+            className="md:cursor-none text-[clamp(20px,2.5vw,32px)] leading-none tracking-[1%] resize-none border-b border-foreground outline-none py-[18px] bg-transparent disabled:opacity-50 transition-opacity duration-200"
           />
 
           {/* Quiet inline feedback */}
@@ -148,12 +150,12 @@ const Reachout = () => {
             disabled={isSending}
             animate={{ opacity: isSending ? 0.55 : 1 }}
             transition={{ duration: 0.2 }}
-            className="text-[32px] leading-none tracking-[1%] flex items-center gap-[10px] text-white bg-foreground rounded-[5px] py-[15px] px-[30px] w-fit disabled:cursor-not-allowed"
+            className="text-[clamp(20px,2vw,32px)] leading-none tracking-[1%] flex items-center gap-[10px] text-white bg-foreground rounded-[5px] py-[15px] px-[30px] w-fit disabled:cursor-not-allowed"
           >
             <p>{isSending ? "Sending…" : "Send it"}</p>
             {!isSending && (
               <Image
-                src={"/arrow-white.svg"}
+                src="/arrow-white.svg"
                 alt="send btn"
                 width={20}
                 height={20}
@@ -162,35 +164,45 @@ const Reachout = () => {
           </motion.button>
         </form>
 
-        <div className="text-[40px] font-mono font-medium space-y-[32px] w-fit">
-          <div className="flex items-center gap-[24px]">
+        {/* Contact details */}
+        <div className="text-[clamp(16px,2.5vw,40px)] font-mono font-medium space-y-[24px] md:space-y-[32px] w-fit flex-shrink-0">
+          <div className="flex items-center gap-[16px] md:gap-[24px]">
             <Image
-              src={"/icons/phone.svg"}
+              src="/icons/phone.svg"
               alt="phone"
               width={36}
               height={36}
+              className="w-[24px] h-[24px] md:w-[36px] md:h-[36px] flex-shrink-0"
             />
             <p>+234 905 331 2182</p>
           </div>
-          <div className="flex items-center gap-[24px]">
-            <Image src={"/icons/mail.svg"} alt="mail" width={36} height={36} />
+          <div className="flex items-center gap-[16px] md:gap-[24px]">
+            <Image
+              src="/icons/mail.svg"
+              alt="mail"
+              width={36}
+              height={36}
+              className="w-[24px] h-[24px] md:w-[36px] md:h-[36px] flex-shrink-0"
+            />
             <p>obhahiepraise@gmail.com</p>
           </div>
-          <div className="  flex items-center gap-[24px]">
+          <div className="flex items-center gap-[16px] md:gap-[24px]">
             <Image
-              src={"/icons/location.svg"}
+              src="/icons/location.svg"
               alt="location"
               width={36}
               height={36}
+              className="w-[24px] h-[24px] md:w-[36px] md:h-[36px] flex-shrink-0"
             />
             <p>Benin, Nigeria</p>
           </div>
-          <div className="flex items-center gap-[24px]">
+          <div className="flex items-center gap-[16px] md:gap-[24px]">
             <Image
-              src={"/icons/calendar.svg"}
+              src="/icons/calendar.svg"
               alt="calendar"
               width={36}
               height={36}
+              className="w-[24px] h-[24px] md:w-[36px] md:h-[36px] flex-shrink-0"
             />
             <p>Reply within 1–2 days</p>
           </div>

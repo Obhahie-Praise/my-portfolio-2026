@@ -61,7 +61,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     <AnimatePresence>
       {project && (
         <motion.div
-          className="fixed inset-0 z-[1000] flex items-center justify-center p-6"
+          className="fixed inset-0 z-[1000] flex items-center justify-center p-[12px] md:p-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -84,7 +84,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* Modal */}
           <motion.div
             ref={modalRef}
-            className="relative z-10 w-full max-w-[1400px] h-[90vh] overflow-y-auto bg-background text-[var(--foreground)] rounded-[10px]"
+            className="relative z-10 w-full max-w-[1400px] h-[92vh] overflow-y-auto bg-background text-[var(--foreground)] rounded-[10px]"
             initial={{
               opacity: 0,
               scale: 0.96,
@@ -106,7 +106,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close */}
+            {/* Close button */}
             <motion.button
               type="button"
               onClick={handleClose}
@@ -114,7 +114,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               whileHover={{ scale: 1.08, opacity: 1 }}
               whileTap={{ scale: 0.93 }}
               transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute right-6 top-6 z-20 flex items-center justify-center w-[40px] h-[40px] rounded-full border border-[var(--foreground)]/15 bg-[var(--background)] opacity-70 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--foreground)]/30 transition-opacity duration-200 cursor-none"
+              className="absolute right-4 top-4 md:right-6 md:top-6 z-20 flex items-center justify-center w-[44px] h-[44px] rounded-full border border-[var(--foreground)]/15 bg-[var(--background)] opacity-70 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--foreground)]/30 transition-opacity duration-200"
             >
               <svg
                 width="14"
@@ -132,18 +132,19 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               </svg>
             </motion.button>
 
-            <div className="grid grid-cols-2 gap-10 p-8">
-              {/* LEFT */}
+            {/* Content: single column on mobile, two columns on md+ */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 p-4 md:p-8">
+              {/* LEFT — project info */}
               <div className="flex flex-col">
                 <div>
                   <h2
                     id="project-title"
-                    className="font-medium font-mono text-[40px] leading-none"
+                    className="font-medium font-mono text-[clamp(24px,3vw,40px)] leading-none"
                   >
                     {project.title}
                   </h2>
 
-                  <p className="mt-[12px] opacity-60 text-[24px] leading-none">
+                  <p className="mt-[12px] opacity-60 text-[clamp(15px,2vw,24px)] leading-none">
                     {project.description}
                   </p>
 
@@ -152,7 +153,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-[#B29C8F] font-medium px-[10px] py-[6] text-[15px]"
+                        className="rounded-full border border-[#B29C8F] font-medium px-[10px] py-[6px] text-[13px] md:text-[15px]"
                       >
                         {tag}
                       </span>
@@ -176,7 +177,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
                 {/* Project metadata */}
                 <ProjectSection title="PROJECT">
-                  <div className="grid grid-cols-[100px_1fr] gap-y-2">
+                  <div className="grid grid-cols-[90px_1fr] md:grid-cols-[100px_1fr] gap-y-2">
                     <span>Ownership</span>
                     <span>{project.ownership}</span>
 
@@ -194,7 +195,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     {project.techStack.map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-full border border-[#B29C8F] px-3 py-1 text-[15px] font-medium"
+                        className="rounded-full border border-[#B29C8F] px-3 py-1 text-[13px] md:text-[15px] font-medium"
                       >
                         {tech}
                       </span>
@@ -208,24 +209,24 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </ProjectSection>
               </div>
 
-              {/* RIGHT */}
-              <div className="sticky top-0 h-fit">
+              {/* RIGHT — carousel (sticky on desktop, inline on mobile) */}
+              <div className="md:sticky md:top-0 h-fit">
                 <ImageCarousel key={project.id} images={project.images} title={project.title} />
               </div>
             </div>
 
-            {/* Footer */}
-            <div className="flex justify-end gap-8 border-t border-current/10 p-8 text-[20px] leading-[-1%]">
+            {/* Footer links */}
+            <div className="flex flex-wrap justify-end gap-4 md:gap-8 border-t border-current/10 p-4 md:p-8 text-[clamp(14px,1.5vw,20px)] leading-[-1%]">
               {project.links?.live && (
                 <Link
                   href={project.links.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-sm bg-[var(--foreground)] flex items-center text-white gap-x-[10px] px-[20px] py-[10px]"
+                  className="rounded-sm bg-[var(--foreground)] flex items-center text-white gap-x-[10px] px-[16px] md:px-[20px] py-[10px]"
                 >
-                  <p className="">Visit project</p>
+                  <p>Visit project</p>
                   <Image
-                    src={"arrow-white.svg"}
+                    src="arrow-white.svg"
                     alt="arrow link"
                     width={10.02}
                     height={10.02}
@@ -238,11 +239,11 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   href={project.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-x-[10px] px-[20px] py-[10px]"
+                  className="flex items-center gap-x-[10px] px-[16px] md:px-[20px] py-[10px]"
                 >
-                  <p className="">Github</p>
+                  <p>Github</p>
                   <Image
-                    src={"arrow.svg"}
+                    src="arrow.svg"
                     alt="arrow link"
                     width={10.02}
                     height={10.02}
@@ -265,10 +266,10 @@ function ProjectSection({
   children: React.ReactNode;
 }) {
   return (
-    <section className="mt-10">
-      <h3 className="mb-2 text-[20px] opacity-50 font-mono font-medium">{title}</h3>
+    <section className="mt-8 md:mt-10">
+      <h3 className="mb-2 text-[16px] md:text-[20px] opacity-50 font-mono font-medium">{title}</h3>
 
-      <div className="border-l border-foreground pl-3 text-sm leading-relaxed text-[20px]">
+      <div className="border-l border-foreground pl-3 text-sm leading-relaxed text-[16px] md:text-[20px]">
         {children}
       </div>
     </section>

@@ -4,36 +4,41 @@ import React from "react";
 
 const Feats = () => {
   return (
-    <section id="feats" className="space-y-[70px] px-[50px] ">
-      <div className="grid grid-cols-2">
-        <h3 className="text-[150px] tracking-[1%] leading-none font-mono flex items-center">
+    <section id="feats" className="space-y-[48px] md:space-y-[70px] px-[20px] md:px-[50px]">
+      {/* Section header */}
+      <div className="grid grid-cols-1 gap-[12px] md:grid-cols-2">
+        <h3 className="text-[clamp(60px,11vw,150px)] tracking-[1%] leading-none font-mono flex items-center">
           Feats
         </h3>
-        <p className="text-[28px] tracking-[1%] leading-[122%] flex items-center">
+        <p className="text-[clamp(16px,2vw,28px)] tracking-[1%] leading-[122%] flex items-center">
           A few things I&apos;ve managed to pull off along the way — from turning
           ideas into projects to competing, presenting.
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-x-[24px] gap-y-[48px]">
+
+      {/* Cards grid — stacks on mobile */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[24px] gap-y-[48px]">
         {feats.map((feat) => (
           <div key={feat.id} className="space-y-[32px]">
-            <Image
-              src={feat.images[0]}
-              alt={feat.title}
-              width={694.5}
-              height={494}
-              className="bg-linear-to-br from-[#0E1318] to-[#4B637E] rounded-[5px] w-full h-[494px]"
-            />
+            {/* Aspect-ratio container ensures correct proportions at every width */}
+            <div className="relative w-full aspect-[694.5/494] rounded-[5px] overflow-hidden bg-linear-to-br from-[#0E1318] to-[#4B637E]">
+              <Image
+                src={feat.images[0]}
+                alt={feat.title}
+                fill
+                className="object-cover"
+              />
+            </div>
             <div className="space-y-[24px]">
               <div className="space-y-[6px]">
-                <h4 className="text-[32px] font-mono font-medium leading-none">
+                <h4 className="text-[clamp(20px,2.5vw,32px)] font-mono font-medium leading-none">
                   {feat.title} <span className="italic">{feat.position}</span>
                 </h4>
-                <p className="text-[20px] text-[#826859] tracking-[-1%] leading-none font-medium">
+                <p className="text-[clamp(14px,1.5vw,20px)] text-[#826859] tracking-[-1%] leading-none font-medium">
                   {feat.description}
                 </p>
               </div>
-              <div className="space-x-[4px]">
+              <div className="flex flex-wrap gap-[4px]">
                 {feat.tags.map((tag) => (
                   <span
                     key={tag}
