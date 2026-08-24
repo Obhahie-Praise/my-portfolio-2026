@@ -7,7 +7,7 @@ const Footer = () => {
       {/* Top row — stacks on mobile */}
       <div className="flex flex-col gap-[48px] md:flex-row md:items-end md:justify-between">
         {/* Navigation + Socials columns */}
-        <div className="flex items-start gap-x-[48px] md:gap-x-[130px]">
+        <div className="grid grid-cols-2 w-full md:flex md:items-start md:w-auto gap-x-[48px] md:gap-x-[130px]">
           <div className="flex flex-col gap-[24px] md:gap-[32px] leading-none tracking-[1%]">
             <p className="text-[16px] md:text-[20px] text-text-muted">NAVIGATION</p>
             <Link href="/#projects" className="cursor-link font-mono font-medium text-[clamp(20px,2.5vw,32px)]">

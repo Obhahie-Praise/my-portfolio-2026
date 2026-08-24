@@ -67,9 +67,7 @@ export const projects: Project[] = [
 
     work: "Examinr began as an exploration into how AI could make exam preparation more deliberate and personalized. I designed and built the product experience from the ground up, from its onboarding and study flows to the underlying application.",
 
-    images: [
-      "/projects/examinr-ai/01.svg",
-    ],
+    images: ["/projects/examinr-ai/01.svg"],
 
     links: {
       live: "#",
@@ -102,9 +100,7 @@ export const projects: Project[] = [
 
     work: "Designed the monitoring experience around making potentially complex incidents easier to identify and act on.",
 
-    images: [
-      "/projects/overwatch/01.svg",
-    ],
+    images: ["/projects/overwatch/01.svg"],
 
     links: {
       live: "#",
@@ -116,26 +112,26 @@ export const projects: Project[] = [
     id: "rail",
     title: "Rail",
     description:
-      "Designed to provide realtime locations of loved ones in crisis",
+      "An embedded safety monitoring system that provides real-time safety metrics for potential victims during a crisis.",
 
     status: "completed",
     type: "team",
 
-    tags: ["TEAM PROJECT", "PRODUCT", "PRESENTATION"],
-    category: "Design",
+    tags: ["TEAM PROJECT", "EMBEDDED SYSTEMS", "SAFETY"],
+    category: "Embedded Systems",
 
     purpose:
-      "Exploring a practical solution to a transportation problem through product thinking and clear communication.",
+      "Designed to provide real-time safety information that can help monitor and respond to people at risk during crisis situations.",
 
-    role: ["Product design", "UI/UX", "Presentation"],
+    role: ["Embedded systems", "System development", "Presentation"],
 
     ownership: "Team",
     team: "Collaborative",
     timeline: "2025",
 
-    techStack: ["Figma", "Product Design"],
+    techStack: ["Embedded Systems", "Sensors", "Hardware"],
 
-    work: "Worked as part of a team to shape the product and translate the idea into a clear, compelling presentation.",
+    work: "Contributed to the development of the safety monitoring system, helping turn the concept into a functional embedded solution for collecting and communicating real-time safety metrics.",
 
     images: ["/projects/rail/01.svg"],
 
@@ -178,7 +174,8 @@ export const projects: Project[] = [
   {
     id: "arrivd",
     title: "Arrivd",
-    description: "Simplified & offline-first classroom attendance system",
+    description:
+      "An offline-first attendance system designed to make classroom attendance easier for teachers and students in Nigerian schools.",
 
     status: "completed",
     type: "personal",
@@ -186,7 +183,8 @@ export const projects: Project[] = [
     tags: ["PRODUCT", "MOBILE", "UX"],
     category: "UI/UX",
 
-    purpose: "Exploring a simpler experience around arrival and movement.",
+    purpose:
+      "Designed a frictionless attendance experience that works reliably in environments where internet connectivity cannot always be assumed.",
 
     role: ["Product thinking", "UI/UX design"],
 
@@ -196,7 +194,7 @@ export const projects: Project[] = [
 
     techStack: ["Figma", "Product Design"],
 
-    work: "Designed the experience around reducing friction and making the core interaction feel immediate and intuitive.",
+    work: "Designed the mobile experience around an offline-first attendance workflow, focusing on making attendance taking simple for teachers and straightforward for students while supporting delayed settlement when connectivity is unavailable.",
 
     images: ["/projects/arrivd/01.svg"],
 

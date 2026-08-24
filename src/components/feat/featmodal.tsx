@@ -2,24 +2,40 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useCallback } from "react";
-import type { Project } from "../../data/projects";
-import Link from "next/link";
-import Image from "next/image";
-import ImageCarousel from "./imagecarousel";
+import ImageCarousel from "../project/imagecarousel";
 
-type ProjectModalProps = {
-  project: Project | null;
+export type Feat = {
+  id: number;
+  title: string;
+  position: string;
+  description: string;
+  tags: string[];
+  context: string;
+  myRole: string[];
+  feat: {
+    result: string;
+    category: string;
+    ownership: string;
+    team: string;
+    timeline: string;
+  };
+  work: string;
+  images: string[];
+};
+
+type FeatModalProps = {
+  feat: Feat | null;
   onClose: () => void;
 };
 
-export default function ProjectModal({ project, onClose }: ProjectModalProps) {
+export default function FeatModal({ feat, onClose }: FeatModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
 
   // Stable close reference
   const handleClose = useCallback(() => onClose(), [onClose]);
 
   useEffect(() => {
-    if (!project) return;
+    if (!feat) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -32,9 +48,9 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [project, handleClose]);
+  }, [feat, handleClose]);
 
-  // Outside-click handler — only fires when the click target is the backdrop
+  // Outside-click handler
   const handleBackdropClick = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
       if (modalRef.current && modalRef.current.contains(e.target as Node)) {
@@ -46,20 +62,19 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   );
 
   useEffect(() => {
-    if (!project) return;
+    if (!feat) return;
 
     const originalOverflow = document.body.style.overflow;
-
     document.body.style.overflow = "hidden";
 
     return () => {
       document.body.style.overflow = originalOverflow;
     };
-  }, [project]);
+  }, [feat]);
 
   return (
     <AnimatePresence>
-      {project && (
+      {feat && (
         <motion.div
           className="fixed inset-0 z-[1000] flex items-center justify-center p-[12px] md:p-6"
           initial={{ opacity: 0 }}
@@ -69,7 +84,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           onClick={handleBackdropClick}
           aria-modal="true"
           role="dialog"
-          aria-labelledby="project-title"
+          aria-labelledby="feat-title"
         >
           {/* Backdrop */}
           <motion.div
@@ -110,7 +125,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             <motion.button
               type="button"
               onClick={handleClose}
-              aria-label="Close project details"
+              aria-label="Close feat details"
               whileHover={{ scale: 1.08, opacity: 1 }}
               whileTap={{ scale: 0.93 }}
               transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
@@ -134,23 +149,23 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
             {/* Content: single column on mobile, two columns on md+ */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 p-4 md:p-8">
-              {/* LEFT — project info */}
+              {/* LEFT — feat info */}
               <div className="flex flex-col">
                 <div>
                   <h2
-                    id="project-title"
+                    id="feat-title"
                     className="font-medium font-mono text-[clamp(24px,3vw,40px)] leading-none"
                   >
-                    {project.title}
+                    {feat.title} <span className="italic opacity-80">{feat.position}</span>
                   </h2>
 
                   <p className="mt-[12px] opacity-60 text-[clamp(15px,2vw,24px)] leading-none">
-                    {project.description}
+                    {feat.description}
                   </p>
 
                   {/* Tags */}
                   <div className="mt-6 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
+                    {feat.tags.map((tag) => (
                       <span
                         key={tag}
                         className="rounded-full border border-text-muted font-medium px-[10px] py-[6px] text-[13px] md:text-[15px]"
@@ -161,95 +176,50 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   </div>
                 </div>
 
-                {/* Purpose */}
-                <ProjectSection title="PURPOSE">
-                  <p>{project.purpose}</p>
-                </ProjectSection>
+                {/* Context / What happened */}
+                <FeatSection title="CONTEXT">
+                  <p>{feat.context}</p>
+                </FeatSection>
 
                 {/* Role */}
-                <ProjectSection title="MY ROLE">
+                <FeatSection title="MY ROLE">
                   <ul className="space-y-1">
-                    {project.role.map((role) => (
+                    {feat.myRole.map((role) => (
                       <li key={role}>{role}</li>
                     ))}
                   </ul>
-                </ProjectSection>
+                </FeatSection>
 
-                {/* Project metadata */}
-                <ProjectSection title="PROJECT">
+                {/* Achievement metadata */}
+                <FeatSection title="ACHIEVEMENT">
                   <div className="grid grid-cols-[90px_1fr] md:grid-cols-[100px_1fr] gap-y-2">
+                    <span>Result</span>
+                    <span className="font-semibold">{feat.feat.result}</span>
+
+                    <span>Category</span>
+                    <span>{feat.feat.category}</span>
+
                     <span>Ownership</span>
-                    <span>{project.ownership}</span>
+                    <span>{feat.feat.ownership}</span>
 
                     <span>Team</span>
-                    <span>{project.team}</span>
+                    <span>{feat.feat.team}</span>
 
                     <span>Timeline</span>
-                    <span>{project.timeline}</span>
+                    <span>{feat.feat.timeline}</span>
                   </div>
-                </ProjectSection>
+                </FeatSection>
 
-                {/* Tech */}
-                <ProjectSection title="TECH STACK">
-                  <div className="flex flex-wrap gap-2">
-                    {project.techStack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-full border border-text-muted px-3 py-1 text-[13px] md:text-[15px] font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </ProjectSection>
-
-                {/* Work */}
-                <ProjectSection title="THE WORK">
-                  <p>{project.work}</p>
-                </ProjectSection>
+                {/* Contribution */}
+                <FeatSection title="CONTRIBUTION">
+                  <p>{feat.work}</p>
+                </FeatSection>
               </div>
 
               {/* RIGHT — carousel (sticky on desktop, inline on mobile) */}
               <div className="md:sticky md:top-0 h-fit">
-                <ImageCarousel key={project.id} images={project.images} title={project.title} />
+                <ImageCarousel key={feat.id} images={feat.images} title={feat.title} />
               </div>
-            </div>
-
-            {/* Footer links */}
-            <div className="flex flex-wrap justify-end gap-4 md:gap-8 border-t border-current/10 p-4 md:p-8 text-[clamp(14px,1.5vw,20px)] leading-[-1%]">
-              {project.links?.live && (
-                <Link
-                  href={project.links.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-sm bg-[var(--foreground)] flex items-center text-white gap-x-[10px] px-[16px] md:px-[20px] py-[10px]"
-                >
-                  <p>Visit project</p>
-                  <Image
-                    src="arrow-white.svg"
-                    alt="arrow link"
-                    width={10.02}
-                    height={10.02}
-                  />
-                </Link>
-              )}
-
-              {project.links?.github && (
-                <Link
-                  href={project.links.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-x-[10px] px-[16px] md:px-[20px] py-[10px]"
-                >
-                  <p>Github</p>
-                  <Image
-                    src="arrow.svg"
-                    alt="arrow link"
-                    width={10.02}
-                    height={10.02}
-                  />
-                </Link>
-              )}
             </div>
           </motion.div>
         </motion.div>
@@ -258,7 +228,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   );
 }
 
-function ProjectSection({
+function FeatSection({
   title,
   children,
 }: {

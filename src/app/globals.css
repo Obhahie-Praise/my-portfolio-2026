@@ -95,6 +95,9 @@ nav, section, footer, button, input, textarea, h1, h2, h3, h4, p, a, span {
   .custom-cursor {
     display: none;
   }
+  .reveal-mask {
+    display: none !important;
+  }
 }
 
 /* ─── Hero title ─────────────────────────────────────────────────────────────
@@ -146,20 +149,20 @@ nav, section, footer, button, input, textarea, h1, h2, h3, h4, p, a, span {
    above the hero h1 as the font scales.                                    */
 @media (max-width: 480px) {
   :root {
-    --reveal-top: 72px;
-    --reveal-left: 16px;
+    --reveal-top: 78px;
+    --reveal-left: 20px;
   }
 }
 @media (min-width: 481px) and (max-width: 767px) {
   :root {
     --reveal-top: 90px;
-    --reveal-left: 24px;
+    --reveal-left: 20px;
   }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
   :root {
     --reveal-top: 110px;
-    --reveal-left: 32px;
+    --reveal-left: 50px;
   }
 }
 @media (min-width: 1024px) {

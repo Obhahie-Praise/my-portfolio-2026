@@ -1,7 +1,9 @@
 "use client";
 
 import Projectcards from "@/components/project/projectcards";
+import ProjectModal from "@/components/project/projectmodal";
 import { projects } from "@/data/projects";
+import type { Project } from "@/data/projects";
 import { useState } from "react";
 
 const PROJECT_TABS = ["All", "Web", "Mobile", "UI/UX", "Design", "Branding"] as const;
@@ -9,6 +11,7 @@ type ProjectTab = (typeof PROJECT_TABS)[number];
 
 const Projects = () => {
   const [activeTab, setActiveTab] = useState<ProjectTab>("All");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const filtered =
     activeTab === "All"
@@ -50,7 +53,11 @@ const Projects = () => {
       {filtered.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[24px] gap-y-[48px]">
           {filtered.map((project) => (
-            <Projectcards key={project.id} project={project} />
+            <Projectcards
+              key={project.id}
+              project={project}
+              onClick={() => setSelectedProject(project)}
+            />
           ))}
         </div>
       ) : (
@@ -58,6 +65,11 @@ const Projects = () => {
           No projects to see here yet.
         </p>
       )}
+
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 };

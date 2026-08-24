@@ -1,8 +1,14 @@
+"use client";
+
 import { feats } from "@/data/feats";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import FeatModal from "@/components/feat/featmodal";
+import type { Feat } from "@/components/feat/featmodal";
 
 const Feats = () => {
+  const [selectedFeat, setSelectedFeat] = useState<Feat | null>(null);
+
   return (
     <section id="feats" className="space-y-[48px] md:space-y-[70px] px-[20px] md:px-[50px]">
       {/* Section header */}
@@ -19,7 +25,12 @@ const Feats = () => {
       {/* Cards grid — stacks on mobile */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[24px] gap-y-[48px]">
         {feats.map((feat) => (
-          <div key={feat.id} className="space-y-[32px]">
+          <button
+            key={feat.id}
+            type="button"
+            onClick={() => setSelectedFeat(feat)}
+            className="text-left space-y-[32px] w-full block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--foreground)]/30 rounded-[5px] transition-shadow duration-200"
+          >
             {/* Aspect-ratio container ensures correct proportions at every width */}
             <div className="relative w-full aspect-[694.5/494] rounded-[5px] overflow-hidden bg-linear-to-br from-[#0E1318] to-[#4B637E]">
               <Image
@@ -49,9 +60,14 @@ const Feats = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </button>
         ))}
       </div>
+
+      <FeatModal
+        feat={selectedFeat}
+        onClose={() => setSelectedFeat(null)}
+      />
     </section>
   );
 };

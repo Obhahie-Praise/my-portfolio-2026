@@ -1,17 +1,12 @@
-"use client";
-
 import { Project } from "@/data/projects";
 import Image from "next/image";
-import { useState } from "react";
-import ProjectModal from "./projectmodal";
 
-const ProjectCards = ({ project }: { project: Project }) => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+const ProjectCards = ({ project, onClick }: { project: Project; onClick: () => void }) => {
   return (
-    <div
-      key={project.id}
-      className="space-y-[32px]"
-      onClick={() => setSelectedProject(project)}
+    <button
+      type="button"
+      onClick={onClick}
+      className="text-left space-y-[32px] w-full block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--foreground)]/30 rounded-[5px] transition-shadow duration-200"
     >
       <Image
         src={project.images[0]}
@@ -40,11 +35,7 @@ const ProjectCards = ({ project }: { project: Project }) => {
           ))}
         </div>
       </div>
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
-    </div>
+    </button>
   );
 };
 

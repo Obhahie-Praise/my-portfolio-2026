@@ -54,7 +54,7 @@ const Thoughts = () => {
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={[
-                "cursor-link transition-colors duration-200 text-left whitespace-nowrap",
+                "cursor-link transition-colors duration-200 text-left whitespace-nowrap md:py-0 py-[18px]",
                 activeTab === tab ? "" : "text-text-muted hover:text-foreground",
               ].join(" ")}
             >

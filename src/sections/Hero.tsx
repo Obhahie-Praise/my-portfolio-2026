@@ -29,8 +29,8 @@ const Hero = () => {
           </h1>
         </div>
 
-        {/* Social links — vertical column on tablet+, row on mobile */}
-        <div className="flex md:flex-col items-center gap-[16px] md:gap-[20px] pt-[64px] md:pt-0 flex-shrink-0">
+        {/* Social links — vertical column on all screen sizes */}
+        <div className="flex flex-col items-center gap-[16px] md:gap-[20px] pt-[60px] md:pt-0 flex-shrink-0">
           <Link
             href="/"
             className="md:cursor-none hover:opacity-80 transition-all hover:scale-110"
@@ -103,20 +103,20 @@ const Hero = () => {
       </RevealMask>
 
       {/* ── Stats row ────────────────────────────────────────────────────── */}
-      <div className="font-mono font-medium flex flex-wrap items-start justify-start md:justify-between pt-[40px] md:pt-30 gap-y-[8px]">
-        <div className="flex flex-col items-start gap-2 py-[16px] px-[16px] md:py-[20px] md:px-[28px] min-w-[140px] md:min-w-0">
+      <div className="font-mono font-medium grid grid-cols-2 md:flex md:flex-wrap items-start justify-start md:justify-between pt-[40px] md:pt-30 gap-y-[8px]">
+        <div className="flex flex-col items-start gap-2 py-[16px] px-[16px] md:py-[20px] md:px-[28px] min-w-0">
           <p className="text-[clamp(28px,4vw,40px)]">2+</p>
           <p className="text-[clamp(11px,1.2vw,18px)]">YEARS BUILDING</p>
         </div>
-        <div className="flex flex-col items-start gap-2 py-[16px] px-[16px] md:py-[20px] md:px-[28px] min-w-[140px] md:min-w-0">
+        <div className="flex flex-col items-start gap-2 py-[16px] px-[16px] md:py-[20px] md:px-[28px] min-w-0">
           <p className="text-[clamp(28px,4vw,40px)]">5+</p>
           <p className="text-[clamp(11px,1.2vw,18px)]">VIABLE PROJECTS</p>
         </div>
-        <div className="flex flex-col items-start gap-2 py-[16px] px-[16px] md:py-[20px] md:px-[28px] min-w-[140px] md:min-w-0">
+        <div className="flex flex-col items-start gap-2 py-[16px] px-[16px] md:py-[20px] md:px-[28px] min-w-0">
           <p className="text-[clamp(28px,4vw,40px)]">2</p>
           <p className="text-[clamp(11px,1.2vw,18px)]">NOTABLE MILESTONES</p>
         </div>
-        <div className="flex flex-col items-start gap-2 py-[16px] px-[16px] md:py-[20px] md:px-[28px] min-w-[140px] md:min-w-0">
+        <div className="flex flex-col items-start gap-2 py-[16px] px-[16px] md:py-[20px] md:px-[28px] min-w-0">
           <p className="text-[clamp(28px,4vw,40px)]">0</p>
           <p className="text-[clamp(11px,1.2vw,18px)]">IDEAS WORTH EXPLORING</p>
         </div>
