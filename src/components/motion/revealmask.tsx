@@ -11,12 +11,10 @@ import { useCursor } from "./cursorprovider";
 
 type RevealMaskProps = {
   children: React.ReactNode;
-  active: boolean;
 };
 
 export default function RevealMask({
   children,
-  active,
 }: RevealMaskProps) {
   const { x, y, size } = useCursor();
 

@@ -35,7 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${anzicarSans.variable} ${anzicarSerif.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col overflow-visible">
+      <body className="min-h-full flex flex-col">
         <Analytics />
         <CursorProvider>
           <CustomCursor />

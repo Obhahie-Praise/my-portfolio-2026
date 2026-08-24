@@ -4,7 +4,7 @@ import React from "react";
 
 const Feats = () => {
   return (
-    <section id="feats" className="space-y-[70px]">
+    <section id="feats" className="space-y-[70px] px-[50px] ">
       <div className="grid grid-cols-2">
         <h3 className="text-[150px] tracking-[1%] leading-none font-mono flex items-center">
           Feats
@@ -18,11 +18,11 @@ const Feats = () => {
         {feats.map((feat) => (
           <div key={feat.id} className="space-y-[32px]">
             <Image
-              src={"/"}
+              src={feat.images[0]}
               alt={feat.title}
               width={694.5}
               height={494}
-              className="bg-linear-to-br from-[#0E1318] to-[#4B637E] rounded-[5px]"
+              className="bg-linear-to-br from-[#0E1318] to-[#4B637E] rounded-[5px] w-full h-[494px]"
             />
             <div className="space-y-[24px]">
               <div className="space-y-[6px]">

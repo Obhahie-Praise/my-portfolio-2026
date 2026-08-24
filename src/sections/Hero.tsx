@@ -11,22 +11,29 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative hero-title overflow-visible"
-      onPointerEnter={() => setMode("reveal")}
-      onPointerLeave={() => setMode("default")}
+      className="relative hero-title overflow-visible px-[50px] "
     >
       <div className="w-full flex items-start justify-between">
         <div className="pt-[123px]">
           <h2 className="text-[36px] leading-none">I&apos;m Praise</h2>
 
-          <h1 className="text-[140px] tracking-[-4%] leading-[117%] hero-title-base">
+          <h1
+            className="text-[140px] tracking-[-4%] leading-[117%] hero-title-base"
+            onPointerEnter={() => setMode("reveal")}
+            onPointerLeave={() => setMode("default")}
+          >
             Building viable solutions <br /> since 2024
           </h1>
         </div>
 
         {/* Social links */}
         <div className="flex flex-col items-center gap-[20px]">
-          <Link href={"/"}>
+          <Link
+            href={"/"}
+            className="cursor-none hover:opacity-80 transition-all hover:scale-110"
+            onPointerEnter={() => setMode("link")}
+            onPointerLeave={() => setMode("default")}
+          >
             {" "}
             <Image
               src={"/icons/tiktok.svg"}
@@ -35,7 +42,12 @@ const Hero = () => {
               width={24}
             />
           </Link>
-          <Link href={"/"}>
+          <Link
+            href={"/"}
+            className="cursor-none hover:opacity-80 transition-all hover:scale-110"
+            onPointerEnter={() => setMode("link")}
+            onPointerLeave={() => setMode("default")}
+          >
             {" "}
             <Image
               src={"/icons/linkedin.svg"}
@@ -44,7 +56,12 @@ const Hero = () => {
               width={24}
             />
           </Link>
-          <Link href={"/"}>
+          <Link
+            href={"/"}
+            className="cursor-none hover:opacity-80 transition-all hover:scale-110"
+            onPointerEnter={() => setMode("link")}
+            onPointerLeave={() => setMode("default")}
+          >
             {" "}
             <Image
               src={"/icons/twitter.svg"}
@@ -53,7 +70,12 @@ const Hero = () => {
               width={24}
             />
           </Link>
-          <Link href={"/"}>
+          <Link
+            href={"/"}
+            className="cursor-none hover:opacity-80 transition-all hover:scale-110"
+            onPointerEnter={() => setMode("link")}
+            onPointerLeave={() => setMode("default")}
+          >
             {" "}
             <Image
               src={"/icons/github.svg"}
@@ -64,9 +86,9 @@ const Hero = () => {
           </Link>
         </div>
       </div>
-      <RevealMask active={mode === "reveal"}>
+      <RevealMask>
         <div className="hero-title-reveal">
-          Designing cool shi <br />
+          Designing cool shiii <br />
           since 2025
         </div>
       </RevealMask>

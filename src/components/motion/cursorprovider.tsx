@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 import { useMotionValue, useSpring, type MotionValue } from "motion/react";
 
-export type CursorMode = "default" | "reveal";
+export type CursorMode = "default" | "reveal" | "link";
 
 type CursorContextValue = {
   x: MotionValue<number>;
@@ -55,17 +55,23 @@ export function CursorProvider({ children }: { children: React.ReactNode }) {
   const targetSize = useMotionValue(20);
 
   const size = useSpring(targetSize, {
-    stiffness: 700,
-    damping: 45,
+    stiffness: 500,
+    damping: 50,
     mass: 0.25,
   });
 
   /*
    * Change lens size when the mode changes.
    */
-  useEffect(() => {
-    targetSize.set(mode === "reveal" ? 300 : 20);
-  }, [mode, targetSize]);
+useEffect(() => {
+  if (mode === "reveal") {
+    targetSize.set(350);
+  } else if (mode === "link") {
+    targetSize.set(10);
+  } else {
+    targetSize.set(0);
+  }
+}, [mode, targetSize]);
 
   /*
    * TRACK THE POINTER GLOBALLY

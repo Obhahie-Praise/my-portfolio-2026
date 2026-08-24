@@ -1,11 +1,22 @@
+"use client";
+
+import Projectcards from "@/components/project/projectcards";
 import { projects } from "@/data/projects";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import { useState } from "react";
+
+const PROJECT_TABS = ["All", "Web", "Mobile", "UI/UX", "Design", "Branding"] as const;
+type ProjectTab = (typeof PROJECT_TABS)[number];
 
 const Projects = () => {
+  const [activeTab, setActiveTab] = useState<ProjectTab>("All");
+
+  const filtered =
+    activeTab === "All"
+      ? projects
+      : projects.filter((p) => p.category === activeTab);
+
   return (
-    <section id="projects" className="space-y-[70px] pt-[125px]">
+    <section id="projects" className="space-y-[70px] pt-[125px] px-[50px]">
       <div className="">
         <div className="space-y-[100px]">
           <div className="grid grid-cols-2">
@@ -18,55 +29,33 @@ const Projects = () => {
             </p>
           </div>
           <div className="flex items-center text-[40px] font-medium font-mono gap-[74px] py-[18px] border-b border-[#E5CCBD]">
-            <Link href={"/?"} className="">
-              All
-            </Link>
-            <Link href={"/?"} className="text-[#B29C8F]">
-              Web
-            </Link>
-            <Link href={"/?"} className="text-[#B29C8F]">
-              Mobile
-            </Link>
-            <Link href={"/?"} className="text-[#B29C8F]">
-              UI/UX
-            </Link>
-            <Link href={"/?"} className="text-[#B29C8F]">
-              Design
-            </Link>
-            <Link href={"/?"} className="text-[#B29C8F]">
-              Branding
-            </Link>
+            {PROJECT_TABS.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={[
+                  "cursor-link transition-colors duration-200",
+                  activeTab === tab ? "" : "text-[#B29C8F] hover:text-foreground",
+                ].join(" ")}
+              >
+                {tab}
+              </button>
+            ))}
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-x-[24px] gap-y-[48px]">
-        {projects.map((project) => (
-          <div key={project.id} className="space-y-[32px]">
-            <Image
-              src={"/"}
-              alt={project.title}
-              width={694.5}
-              height={494}
-              className="bg-linear-to-br from-[#0E1318] to-[#4B637E] rounded-[5px]"
-            />
-            <div className="space-y-[24px]">
-              <div className="space-y-[6px]">
-                <h4 className="text-[32px] font-mono font-medium leading-none">
-                  {project.title}
-                </h4>
-                <p className="text-[20px] text-[#826859] tracking-[-1%] leading-none font-medium">
-                  {project.description}
-                </p>
-              </div>
-              <div className="space-x-[4px]">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="uppercase text-[12px] font-medium tracking-[-1%] py-[6px] px-[10px] border border-[#B29C8F] rounded-full">{tag}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+
+      {filtered.length > 0 ? (
+        <div className="grid grid-cols-2 gap-x-[24px] gap-y-[48px]">
+          {filtered.map((project) => (
+            <Projectcards key={project.id} project={project} />
+          ))}
+        </div>
+      ) : (
+        <p className="text-[20px] font-medium text-[#B29C8F]">
+          No projects to see here yet.
+        </p>
+      )}
     </section>
   );
 };
