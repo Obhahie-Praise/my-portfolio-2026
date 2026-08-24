@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Hero = () => {
-  const { mode, setMode } = useCursor();
+  const { setMode } = useCursor();
 
   return (
     <section

@@ -44,7 +44,7 @@ const Thoughts = () => {
             px-0 md:px-[32px]
             pb-[4px] md:pb-0 md:py-[12px]
             border-b md:border-b-0 md:border-r
-            border-[#E5CCBD]
+            border-border-custom
             flex-shrink-0
             scrollbar-hide
           "
@@ -55,7 +55,7 @@ const Thoughts = () => {
               onClick={() => setActiveTab(tab)}
               className={[
                 "cursor-link transition-colors duration-200 text-left whitespace-nowrap",
-                activeTab === tab ? "" : "text-[#B29C8F] hover:text-foreground",
+                activeTab === tab ? "" : "text-text-muted hover:text-foreground",
               ].join(" ")}
             >
               {tab}
@@ -94,7 +94,7 @@ const Thoughts = () => {
               </button>
             ))
           ) : (
-            <p className="text-[20px] font-medium text-[#B29C8F] px-[24px] py-[18px]">
+            <p className="text-[20px] font-medium text-text-muted px-[24px] py-[18px]">
               No thoughts in this category yet.
             </p>
           )}

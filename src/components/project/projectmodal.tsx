@@ -153,7 +153,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-[#B29C8F] font-medium px-[10px] py-[6px] text-[13px] md:text-[15px]"
+                        className="rounded-full border border-text-muted font-medium px-[10px] py-[6px] text-[13px] md:text-[15px]"
                       >
                         {tag}
                       </span>
@@ -195,7 +195,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     {project.techStack.map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-full border border-[#B29C8F] px-3 py-1 text-[13px] md:text-[15px] font-medium"
+                        className="rounded-full border border-text-muted px-3 py-1 text-[13px] md:text-[15px] font-medium"
                       >
                         {tech}
                       </span>

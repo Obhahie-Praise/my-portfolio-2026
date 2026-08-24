@@ -3,30 +3,43 @@
 :root {
   --background: #ffe2d1;
   --foreground: #351e10;
+  --border-color: #E5CCBD;
+  --text-muted: #B29C8F;
+  --text-description: #826859;
+}
+
+.dark {
+  --background: #351e10;
+  --foreground: #ffe2d1;
+  --border-color: #4e3626;
+  --text-muted: #8e7362;
+  --text-description: #bda290;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-border-custom: var(--border-color);
+  --color-text-muted: var(--text-muted);
+  --color-text-description: var(--text-description);
   --font-sans: var(--font-anzicar-sans);
   --font-mono: var(--font-anzicar-serif);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #ffe2d1;
-    --foreground: #351e10;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  transition: background-color 300ms ease, color 300ms ease;
 
   /* Firefox scrollbar */
   scrollbar-width: thin;
   scrollbar-color: rgba(53, 30, 16, 0.25) transparent;
+}
+
+/* Smooth color transitions for themeable elements */
+nav, section, footer, button, input, textarea, h1, h2, h3, h4, p, a, span {
+  transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease;
 }
 
 /* Chromium scrollbar — global */

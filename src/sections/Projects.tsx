@@ -30,14 +30,14 @@ const Projects = () => {
         </div>
 
         {/* Filter tabs */}
-        <div className="flex flex-wrap items-center text-[clamp(20px,3vw,40px)] font-medium font-mono gap-x-[24px] gap-y-[8px] md:gap-x-[74px] py-[18px] border-b border-[#E5CCBD]">
+        <div className="flex flex-wrap items-center text-[clamp(20px,3vw,40px)] font-medium font-mono gap-x-[24px] gap-y-[8px] md:gap-x-[74px] py-[18px] border-b border-border-custom">
           {PROJECT_TABS.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={[
                 "cursor-link transition-colors duration-200",
-                activeTab === tab ? "" : "text-[#B29C8F] hover:text-foreground",
+                activeTab === tab ? "" : "text-text-muted hover:text-foreground",
               ].join(" ")}
             >
               {tab}
@@ -54,7 +54,7 @@ const Projects = () => {
           ))}
         </div>
       ) : (
-        <p className="text-[20px] font-medium text-[#B29C8F]">
+        <p className="text-[20px] font-medium text-text-muted">
           No projects to see here yet.
         </p>
       )}

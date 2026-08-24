@@ -3,6 +3,7 @@ import { Ancizar_Sans, Ancizar_Serif, Geist } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/motion/customcursor";
 import { CursorProvider } from "@/components/motion/cursorprovider";
+import { ThemeProvider } from "@/components/motion/themeprovider";
 import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
@@ -34,13 +35,33 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${geistSans.variable} ${anzicarSans.variable} ${anzicarSerif.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const savedTheme = localStorage.getItem('theme');
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <Analytics />
-        <CursorProvider>
-          <CustomCursor />
-          {children}
-        </CursorProvider>
+        <ThemeProvider>
+          <CursorProvider>
+            <CustomCursor />
+            {children}
+          </CursorProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { useTheme } from "@/components/motion/themeprovider";
 
 const NAV_LINKS = [
   { label: "PROJECTS", href: "/#projects" },
@@ -14,6 +15,7 @@ const NAV_LINKS = [
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
@@ -33,6 +35,37 @@ const Navbar = () => {
       document.body.style.overflow = "";
     };
   }, [menuOpen]);
+
+  const renderThemeIcon = () => {
+    if (theme === "dark") {
+      return (
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+          className="flex-shrink-0"
+        >
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      );
+    }
+    return (
+      <Image
+        src="/sun-line.svg"
+        alt=""
+        height={18}
+        width={18}
+        className="flex-shrink-0"
+        aria-hidden="true"
+      />
+    );
+  };
 
   return (
     <nav
@@ -58,10 +91,15 @@ const Navbar = () => {
             {label}
           </Link>
         ))}
-        <div className="flex items-center gap-[8px] text-[15px] cursor-link">
-          <Image src="/sun-line.svg" alt="theme toggle" height={18} width={18} />
-          <p>Light</p>
-        </div>
+        <button
+          type="button"
+          onClick={toggleTheme}
+          aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
+          className="flex items-center gap-[8px] text-[15px] cursor-link focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--foreground)]"
+        >
+          {renderThemeIcon()}
+          <p className="capitalize">{theme}</p>
+        </button>
       </div>
 
       {/* Mobile menu button — visible on small screens only */}
@@ -201,20 +239,18 @@ const Navbar = () => {
               </ul>
 
               {/* Light toggle at bottom */}
-              <motion.div
-                className="flex items-center gap-[8px] text-[15px] mt-[32px] opacity-70"
+              <motion.button
+                type="button"
+                onClick={toggleTheme}
+                aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
+                className="flex items-center gap-[8px] text-[15px] mt-[32px] opacity-70 w-full text-left"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.7 }}
                 transition={{ delay: NAV_LINKS.length * 0.045 + 0.05 }}
               >
-                <Image
-                  src="/sun-line.svg"
-                  alt="theme toggle"
-                  height={18}
-                  width={18}
-                />
-                <p>Light</p>
-              </motion.div>
+                {renderThemeIcon()}
+                <p className="capitalize">{theme}</p>
+              </motion.button>
             </motion.div>
           </>
         )}

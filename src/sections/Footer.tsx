@@ -9,7 +9,7 @@ const Footer = () => {
         {/* Navigation + Socials columns */}
         <div className="flex items-start gap-x-[48px] md:gap-x-[130px]">
           <div className="flex flex-col gap-[24px] md:gap-[32px] leading-none tracking-[1%]">
-            <p className="text-[16px] md:text-[20px] text-[#B29C8F]">NAVIGATION</p>
+            <p className="text-[16px] md:text-[20px] text-text-muted">NAVIGATION</p>
             <Link href="/#projects" className="cursor-link font-mono font-medium text-[clamp(20px,2.5vw,32px)]">
               Projects
             </Link>
@@ -24,7 +24,7 @@ const Footer = () => {
             </Link>
           </div>
           <div className="flex flex-col gap-[24px] md:gap-[32px] leading-none tracking-[1%]">
-            <p className="text-[16px] md:text-[20px] text-[#B29C8F]">SOCIALS</p>
+            <p className="text-[16px] md:text-[20px] text-text-muted">SOCIALS</p>
             <Link href="/" className="cursor-link font-mono font-medium text-[clamp(20px,2.5vw,32px)]">
               Tiktok
             </Link>

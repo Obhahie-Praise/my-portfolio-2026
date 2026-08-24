@@ -34,7 +34,7 @@ const Feats = () => {
                 <h4 className="text-[clamp(20px,2.5vw,32px)] font-mono font-medium leading-none">
                   {feat.title} <span className="italic">{feat.position}</span>
                 </h4>
-                <p className="text-[clamp(14px,1.5vw,20px)] text-[#826859] tracking-[-1%] leading-none font-medium">
+                <p className="text-[clamp(14px,1.5vw,20px)] text-text-description tracking-[-1%] leading-none font-medium">
                   {feat.description}
                 </p>
               </div>
@@ -42,7 +42,7 @@ const Feats = () => {
                 {feat.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="uppercase text-[12px] font-medium tracking-[-1%] py-[6px] px-[10px] border border-[#B29C8F] rounded-full"
+                    className="uppercase text-[12px] font-medium tracking-[-1%] py-[6px] px-[10px] border border-text-muted rounded-full"
                   >
                     {tag}
                   </span>
