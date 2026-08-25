@@ -2,8 +2,8 @@
 
 import RevealMask from "@/components/motion/revealmask";
 import { useCursor } from "@/components/motion/cursorprovider";
-import Image from "next/image";
 import Link from "next/link";
+import { ThemeImage } from "@/components/ThemeImage";
 
 const Hero = () => {
   const { setMode } = useCursor();
@@ -32,14 +32,15 @@ const Hero = () => {
         {/* Social links — vertical column on all screen sizes */}
         <div className="flex flex-col items-center gap-[16px] md:gap-[20px] pt-[60px] md:pt-0 flex-shrink-0">
           <Link
-            href="/"
+            href="https://www.tiktok.com/@praise_d_builder"
             className="md:cursor-none hover:opacity-80 transition-all hover:scale-110"
             onPointerEnter={() => setMode("link")}
             onPointerLeave={() => setMode("default")}
             aria-label="TikTok"
           >
-            <Image
+            <ThemeImage
               src="/icons/tiktok.svg"
+              darkSrc="/icons/tiktok-alt.svg"
               alt="tiktok link"
               height={24}
               width={24}
@@ -47,14 +48,15 @@ const Hero = () => {
             />
           </Link>
           <Link
-            href="/"
+            href="https://www.linkedin.com/in/praise-d-builder-743b92426/"
             className="md:cursor-none hover:opacity-80 transition-all hover:scale-110"
             onPointerEnter={() => setMode("link")}
             onPointerLeave={() => setMode("default")}
             aria-label="LinkedIn"
           >
-            <Image
+            <ThemeImage
               src="/icons/linkedin.svg"
+              darkSrc="/icons/linkedin-alt.svg"
               alt="linkedin link"
               height={24}
               width={24}
@@ -62,14 +64,15 @@ const Hero = () => {
             />
           </Link>
           <Link
-            href="/"
+            href="https://x.com/praizedevx"
             className="md:cursor-none hover:opacity-80 transition-all hover:scale-110"
             onPointerEnter={() => setMode("link")}
             onPointerLeave={() => setMode("default")}
             aria-label="Twitter / X"
           >
-            <Image
+            <ThemeImage
               src="/icons/twitter.svg"
+              darkSrc="/icons/twitter-alt.svg"
               alt="twitter link"
               height={24}
               width={24}
@@ -77,14 +80,15 @@ const Hero = () => {
             />
           </Link>
           <Link
-            href="/"
+            href="https://github.com/Obhahie-Praise"
             className="md:cursor-none hover:opacity-80 transition-all hover:scale-110"
             onPointerEnter={() => setMode("link")}
             onPointerLeave={() => setMode("default")}
             aria-label="GitHub"
           >
-            <Image
+            <ThemeImage
               src="/icons/github.svg"
+              darkSrc="/icons/github-alt.svg"
               alt="github link"
               height={24}
               width={24}

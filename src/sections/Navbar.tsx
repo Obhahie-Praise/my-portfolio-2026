@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { ThemeImage } from "@/components/ThemeImage";
 import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useTheme } from "@/components/motion/themeprovider";
@@ -74,8 +75,9 @@ const Navbar = () => {
     >
       {/* Logo — always visible */}
       <Link href="/" aria-label="Home" onClick={closeMenu}>
-        <Image
+        <ThemeImage
           src="/logo.svg"
+          darkSrc="/logo-alt.svg"
           alt="Portfolio logo"
           height={24.3}
           width={238}
@@ -182,8 +184,9 @@ const Navbar = () => {
               {/* Logo row inside panel */}
               <div className="flex items-center justify-between mb-[40px]">
                 <Link href="/" onClick={closeMenu} aria-label="Home">
-                  <Image
+                  <ThemeImage
                     src="/logo.svg"
+                    darkSrc="/logo-alt.svg"
                     alt="Portfolio logo"
                     height={24.3}
                     width={238}

@@ -2,7 +2,7 @@
 
 import { thoughts } from "@/data/thoughts";
 import type { Thought } from "@/data/thoughts";
-import Image from "next/image";
+import { ThemeImage } from "@/components/ThemeImage";
 import { useState } from "react";
 import ThoughtModal from "@/components/thought/thoughtmodal";
 
@@ -84,8 +84,9 @@ const Thoughts = () => {
                     </p>
                   </div>
                 </div>
-                <Image
+                <ThemeImage
                   src="/arrow.svg"
+                  darkSrc="/arrow-white.svg"
                   alt="Read more"
                   width={56.1}
                   height={56.1}

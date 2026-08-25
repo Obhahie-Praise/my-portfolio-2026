@@ -5,6 +5,7 @@ import { useEffect, useRef, useCallback } from "react";
 import type { Project } from "../../data/projects";
 import Link from "next/link";
 import Image from "next/image";
+import { ThemeImage } from "@/components/ThemeImage";
 import ImageCarousel from "./imagecarousel";
 
 type ProjectModalProps = {
@@ -222,11 +223,12 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   href={project.links.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-sm bg-[var(--foreground)] flex items-center text-white gap-x-[10px] px-[16px] md:px-[20px] py-[10px]"
+                  className="rounded-sm bg-[var(--foreground)] dark:text-background flex items-center text-white gap-x-[10px] px-[16px] md:px-[20px] py-[10px]"
                 >
                   <p>Visit project</p>
-                  <Image
+                  <ThemeImage
                     src="arrow-white.svg"
+                    darkSrc="arrow.svg"
                     alt="arrow link"
                     width={10.02}
                     height={10.02}
@@ -242,8 +244,9 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   className="flex items-center gap-x-[10px] px-[16px] md:px-[20px] py-[10px]"
                 >
                   <p>Github</p>
-                  <Image
+                  <ThemeImage
                     src="arrow.svg"
+                    darkSrc="arrow-white.svg"
                     alt="arrow link"
                     width={10.02}
                     height={10.02}

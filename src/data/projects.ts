@@ -70,8 +70,8 @@ export const projects: Project[] = [
     images: ["/projects/examinr-ai/01.svg"],
 
     links: {
-      live: "#",
-      github: "#",
+      live: "https://examinr-ai.vercel.app/",
+      github: "https://github.com/Obhahie-Praise/v1-examinr.ai-waitlist",
     },
   },
 
@@ -134,10 +134,6 @@ export const projects: Project[] = [
     work: "Contributed to the development of the safety monitoring system, helping turn the concept into a functional embedded solution for collecting and communicating real-time safety metrics.",
 
     images: ["/projects/rail/01.svg"],
-
-    links: {
-      live: "#",
-    },
   },
 
   {
@@ -167,7 +163,8 @@ export const projects: Project[] = [
     images: ["/projects/inventory/01.svg"],
 
     links: {
-      github: "#",
+      live: "https://praise-inventory-stum.vercel.app/",
+      github: "https://github.com/Obhahie-Praise/praise-inventory",
     },
   },
 
@@ -197,9 +194,5 @@ export const projects: Project[] = [
     work: "Designed the mobile experience around an offline-first attendance workflow, focusing on making attendance taking simple for teachers and straightforward for students while supporting delayed settlement when connectivity is unavailable.",
 
     images: ["/projects/arrivd/01.svg"],
-
-    links: {
-      live: "#",
-    },
   },
 ];

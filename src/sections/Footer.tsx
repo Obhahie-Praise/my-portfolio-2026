@@ -25,16 +25,16 @@ const Footer = () => {
           </div>
           <div className="flex flex-col gap-[24px] md:gap-[32px] leading-none tracking-[1%]">
             <p className="text-[16px] md:text-[20px] text-text-muted">SOCIALS</p>
-            <Link href="/" className="cursor-link font-mono font-medium text-[clamp(20px,2.5vw,32px)]">
+            <Link href="https://www.tiktok.com/@praise_d_builder" className="cursor-link font-mono font-medium text-[clamp(20px,2.5vw,32px)]">
               Tiktok
             </Link>
-            <Link href="/" className="cursor-link font-mono font-medium text-[clamp(20px,2.5vw,32px)]">
+            <Link href="/https://www.linkedin.com/in/praise-d-builder-743b92426/" className="cursor-link font-mono font-medium text-[clamp(20px,2.5vw,32px)]">
               Linkedin
             </Link>
-            <Link href="/" className="cursor-link font-mono font-medium text-[clamp(20px,2.5vw,32px)]">
+            <Link href="https://x.com/praizedevx" className="cursor-link font-mono font-medium text-[clamp(20px,2.5vw,32px)]">
               X [Twitter]
             </Link>
-            <Link href="/" className="cursor-link font-mono font-medium text-[clamp(20px,2.5vw,32px)]">
+            <Link href="https://github.com/Obhahie-Praise" className="cursor-link font-mono font-medium text-[clamp(20px,2.5vw,32px)]">
               Github
             </Link>
           </div>

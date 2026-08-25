@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { ThemeImage } from "@/components/ThemeImage";
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { motion, AnimatePresence } from "motion/react";
@@ -150,12 +151,13 @@ const Reachout = () => {
             disabled={isSending}
             animate={{ opacity: isSending ? 0.55 : 1 }}
             transition={{ duration: 0.2 }}
-            className="text-[clamp(20px,2vw,32px)] leading-none tracking-[1%] flex items-center gap-[10px] text-white bg-foreground rounded-[5px] py-[15px] px-[30px] w-fit disabled:cursor-not-allowed"
+            className="text-[clamp(20px,2vw,32px)] leading-none tracking-[1%] flex items-center gap-[10px] text-white dark:text-background bg-foreground rounded-[5px] py-[15px] px-[30px] w-fit disabled:cursor-not-allowed"
           >
             <p>{isSending ? "Sending…" : "Send it"}</p>
             {!isSending && (
-              <Image
+              <ThemeImage
                 src="/arrow-white.svg"
+                darkSrc="/arrow.svg"
                 alt="send btn"
                 width={20}
                 height={20}
@@ -167,8 +169,9 @@ const Reachout = () => {
         {/* Contact details */}
         <div className="text-[clamp(16px,2.5vw,40px)] font-mono font-medium space-y-[24px] md:space-y-[32px] w-fit flex-shrink-0">
           <div className="flex items-center gap-[16px] md:gap-[24px]">
-            <Image
+            <ThemeImage
               src="/icons/phone.svg"
+              darkSrc="/icons/phone-alt.svg"
               alt="phone"
               width={36}
               height={36}
@@ -177,8 +180,9 @@ const Reachout = () => {
             <p>+234 905 331 2182</p>
           </div>
           <div className="flex items-center gap-[16px] md:gap-[24px]">
-            <Image
+            <ThemeImage
               src="/icons/mail.svg"
+              darkSrc="/icons/mail-alt.svg"
               alt="mail"
               width={36}
               height={36}
@@ -187,8 +191,9 @@ const Reachout = () => {
             <p>obhahiepraise@gmail.com</p>
           </div>
           <div className="flex items-center gap-[16px] md:gap-[24px]">
-            <Image
+            <ThemeImage
               src="/icons/location.svg"
+              darkSrc="/icons/location-alt.svg"
               alt="location"
               width={36}
               height={36}
